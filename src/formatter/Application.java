@@ -9,8 +9,6 @@ import org.eclipse.equinox.app.IApplicationContext;
 public class Application implements IApplication
 {
 
-	public static final boolean TEST = false;
-	
     @Override
     public Object start(IApplicationContext context)
             throws Exception
