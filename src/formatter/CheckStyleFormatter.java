@@ -36,8 +36,8 @@ public class CheckStyleFormatter {
                       CodeFormatter.K_UNKNOWN,
                       code,0,code.length(),indentationLevel, null);
 
-              String docCode = document.get();
-              edit.apply(document);
+              if(edit != null)
+                edit.apply(document);
         } catch (MalformedTreeException e) {
             e.printStackTrace();
         } catch (BadLocationException e) {
