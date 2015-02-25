@@ -11,8 +11,7 @@ public class Application implements IApplication
 
     @Override
     public Object start(IApplicationContext context)
-            throws Exception
-    {
+            throws Exception  {
         Object argsValue = context.getArguments().get("application.args");
         if( argsValue == null || ! (argsValue instanceof String[]) ) {
             System.out.println("Usage: <Code> <Check Style File>");
