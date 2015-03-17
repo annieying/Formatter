@@ -7,7 +7,6 @@ Bundle-ClassPath: lib/commons-collections-3.2.1.jar,lib/commons-io-2.3
  .jar,lib/commons-lang3-3.1.jar,.
 Bundle-Version: 1.0.0.201502201800
 Bundle-Name: Formatter
-Bundle-Activator: formatter.Activator
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: Formatter;singleton:=true
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
