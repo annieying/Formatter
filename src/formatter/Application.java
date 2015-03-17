@@ -21,8 +21,8 @@ public class Application implements IApplication
                 System.out.println("Require two arguments: <Code> <Check Style File>");
             } else {
                 String code = args[0];
-                String checkStyleFile = args[1];
-                CheckStyleFormatter.format(code, new File(checkStyleFile));
+                String eclipseCodeStyleFile = args[1];
+                EclipseCodeStyleFormatter.format(code, new File(eclipseCodeStyleFile));
             }
         }
         return IApplication.EXIT_OK;

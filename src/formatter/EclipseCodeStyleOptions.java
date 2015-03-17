@@ -21,9 +21,9 @@ import org.xml.sax.SAXException;
  * Programmatically apply code styles via eclipse pde
  * @author deniz.turan (http://denizstij.blogspot.com/) Oct-2009
  */
-public class CheckStyleOptions {
+public class EclipseCodeStyleOptions {
 
-    private static Map<String,String> getCheckStyleEntries(File xmlFile) 
+    private static Map<String,String> getCodeStyleEntries(File xmlFile) 
             throws ParserConfigurationException, SAXException, IOException {
         Map<String,String> entries = new HashMap<String,String>();
                
@@ -49,10 +49,10 @@ public class CheckStyleOptions {
     /** 
      * Return data structure compatible with @see JavaCore.getOptions
      */
-    public static Hashtable getCheckStyleSettingOptions(File checkStyleFile) {
-        Map<String,String> checkStyleOptions = null;
+    public static Hashtable getCodeStyleSettingOptions(File codeStyleFile) {
+        Map<String,String> codeStyleOptions = null;
         try {
-            checkStyleOptions = getCheckStyleEntries(checkStyleFile);
+            codeStyleOptions = getCodeStyleEntries(codeStyleFile);
         } catch (SAXException e) {
             e.printStackTrace();
         } catch (ParserConfigurationException e) {
@@ -62,7 +62,7 @@ public class CheckStyleOptions {
         }
         
         Hashtable options = JavaCore.getDefaultOptions();
-        options.putAll(checkStyleOptions);
+        options.putAll(codeStyleOptions);
         return options;        
     }
 

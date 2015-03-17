@@ -15,20 +15,20 @@ import org.eclipse.text.edits.TextEdit;
  * Programmatically apply code styles via eclipse pde
  * based on code from @see deniz.turan (http://denizstij.blogspot.com/) Oct-2009
  */
-public class CheckStyleFormatter { 
+public class EclipseCodeStyleFormatter { 
 	
-	public static String dir = "./res/check-style-files/";
+	public static String dir = "./res/eclipse-code-style-files/";
 	public static String FILE_VERTICALLY_LONG_STYLE = dir + "vertically-long.xml";
 	public static String FILE_ECLIPSE_BUILT_IN_STYLE = dir + "eclipse-built-in.xml";
 	public static String FILE_COMPACT_STYLE = dir + "compact.xml";
 
-    public static String format(String code, File checkStyleFile) {
+    public static String format(String code, File codeStyleFile) {
     	
           IDocument document = new Document(code);
-          Hashtable checkStyleOptions = CheckStyleOptions.getCheckStyleSettingOptions(checkStyleFile);
+          Hashtable codeStyleOptions = EclipseCodeStyleOptions.getCodeStyleSettingOptions(codeStyleFile);
           
           CodeFormatter formatter = ToolFactory.createCodeFormatter(
-                  checkStyleOptions);
+                  codeStyleOptions);
           
         try {              
               int indentationLevel = 0;
