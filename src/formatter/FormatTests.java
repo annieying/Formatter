@@ -49,8 +49,9 @@ public class FormatTests {
 	      + "}";
 	  
 
-      String codeStyleFile = "/diskless/local/annie/workspaces/20140228-summarizer/Formatter/check-style.xml";
-      String formattedCode = EclipseCodeStyleFormatter.format(code, new File(codeStyleFile));
+      String codeStyleFile = "/diskless/local/annie/workspaces/20140228-summarizer/Formatter/res/eclipse-code-style-files/profiles.xml";
+      String formattedCode = EclipseCodeStyleFormatter.format(code, 
+    		  new File(codeStyleFile));
       System.out.println(formattedCode);
 	}
 	

@@ -19,52 +19,52 @@ import org.xml.sax.SAXException;
 
 /**
  * Programmatically apply code styles via eclipse pde
- * @author deniz.turan (http://denizstij.blogspot.com/) Oct-2009
+ * 
+ * @author deniz.turan (http://denizstij. blogspot.com/) Oct-2009
  */
 public class EclipseCodeStyleOptions {
+	public static final String lineLengthKey = "org.eclipse.jdt.core.formatter.lineSplit";
+	public static final String commentLineLength = "org.eclipse.jdt.core.formatter.comment.line_length";
 
-    private static Map<String,String> getCodeStyleEntries(File xmlFile) 
-            throws ParserConfigurationException, SAXException, IOException {
-        Map<String,String> entries = new HashMap<String,String>();
-               
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document doc = dBuilder.parse(xmlFile);
-        doc.getDocumentElement().normalize();
-      
-        NodeList nList = doc.getElementsByTagName("setting");
-             
-        for (int temp = 0; temp < nList.getLength(); temp++) {     
-            Node nNode = nList.item(temp);          
-            if (nNode.getNodeType() == Node.ELEMENT_NODE) {     
-                Element eElement = (Element) nNode;
-                String id = eElement.getAttribute("id");
-                String value = eElement.getAttribute("value");
-                entries.put(id,value);
-            }
-        }
-        return entries;
-    }
+	private static Map getCodeStyleEntries(File xmlFile)
+			throws ParserConfigurationException, SAXException, IOException {
+		Map entries = new HashMap();
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(xmlFile);
+		doc.getDocumentElement().normalize();
+		NodeList nList = doc.getElementsByTagName("setting");
+		for (int temp = 0; temp < nList.getLength(); temp++) {
+			Node nNode = nList.item(temp);
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				Element eElement = (Element) nNode;
+				String id = eElement.getAttribute("id");
+				String value = eElement.getAttribute("value");
+				entries.put(id, value);
+			}
+		}
+		return entries;
+	}
 
-    /** 
-     * Return data structure compatible with @see JavaCore.getOptions
-     */
-    public static Hashtable getCodeStyleSettingOptions(File codeStyleFile) {
-        Map<String,String> codeStyleOptions = null;
-        try {
-            codeStyleOptions = getCodeStyleEntries(codeStyleFile);
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        
-        Hashtable options = JavaCore.getDefaultOptions();
-        options.putAll(codeStyleOptions);
-        return options;        
-    }
+	/**
+	 * Return data structure compatible with @see JavaCore.getOptions
+	 */
+	public static Hashtable getCodeStyleSettingOptions(File codeStyleFile) {
+		Map codeStyleOptions = null;
+		try {
+			codeStyleOptions = getCodeStyleEntries(codeStyleFile);
+		} catch (SAXException e) {
+			e.printStackTrace();
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Hashtable options = JavaCore.getDefaultOptions();
+//		Hashtable options = JavaCore.getOptions();
 
-    
+		options.putAll(codeStyleOptions);
+		
+		return options;
+	}
 }
