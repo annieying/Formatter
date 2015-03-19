@@ -18,8 +18,10 @@ import org.eclipse.text.edits.TextEdit;
  */
 public class EclipseCodeStyleFormatter {
 	public static String dir = "./res/eclipse-code-style-files/";
-	public static String FILE_VERTICALLY_LONG_STYLE = dir 	+ "vertically-long.xml";
-	public static String FILE_ECLIPSE_BUILT_IN_STYLE = dir + "eclipse-built-in.xml";
+	public static String FILE_VERTICALLY_LONG_STYLE = dir
+			+ "vertically-long.xml";
+	public static String FILE_ECLIPSE_BUILT_IN_STYLE = dir
+			+ "eclipse-built-in.xml";
 	public static String FILE_COMPACT_STYLE = dir + "compact.xml";
 
 	public static String format(String code, File eclipseCodeStyleFile) {
@@ -31,17 +33,18 @@ public class EclipseCodeStyleFormatter {
 		IDocument document = new Document(code);
 		Hashtable codeStyleOptions = EclipseCodeStyleOptions
 				.getCodeStyleSettingOptions(eclipseCodeStyleFile);
-		
-		 if(lineLength >  0) {
-			 codeStyleOptions.put(EclipseCodeStyleOptions.lineLengthKey, Integer.toString(lineLength));
-			 codeStyleOptions.put(EclipseCodeStyleOptions.commentLineLength, Integer.toString(lineLength));
 
-			JavaCore.setOptions(codeStyleOptions);		
-		 }
-		 
-		CodeFormatter formatter = ToolFactory
-				.createCodeFormatter(codeStyleOptions, 
-						ToolFactory.M_FORMAT_EXISTING);
+		if (lineLength > 0) {
+			codeStyleOptions.put(EclipseCodeStyleOptions.lineLengthKey,
+					Integer.toString(lineLength));
+			codeStyleOptions.put(EclipseCodeStyleOptions.commentLineLength,
+					Integer.toString(lineLength));
+
+			JavaCore.setOptions(codeStyleOptions);
+		}
+
+		CodeFormatter formatter = ToolFactory.createCodeFormatter(
+				codeStyleOptions, ToolFactory.M_FORMAT_EXISTING);
 		try {
 			int indentationLevel = 0;
 			TextEdit edit = formatter.format(CodeFormatter.K_UNKNOWN, code, 0,

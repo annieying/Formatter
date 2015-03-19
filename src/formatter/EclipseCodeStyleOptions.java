@@ -61,10 +61,10 @@ public class EclipseCodeStyleOptions {
 			e.printStackTrace();
 		}
 		Hashtable options = JavaCore.getDefaultOptions();
-//		Hashtable options = JavaCore.getOptions();
+		// Hashtable options = JavaCore.getOptions();
 
 		options.putAll(codeStyleOptions);
-		
+
 		return options;
 	}
 }
