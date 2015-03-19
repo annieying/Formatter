@@ -2,7 +2,6 @@ package formatter;
 
 import java.io.File;
 import java.util.Hashtable;
-
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.ToolFactory;
 import org.eclipse.jdt.core.formatter.CodeFormatter;
@@ -58,5 +57,5 @@ public class EclipseCodeStyleFormatter {
 		}
 		String formattedCode = document.get();
 		return formattedCode;
-	}
+	}		
 }
