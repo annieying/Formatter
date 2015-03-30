@@ -44,9 +44,11 @@ public class EclipseCodeStyleFormatter {
 
 		CodeFormatter formatter = ToolFactory.createCodeFormatter(
 				codeStyleOptions, ToolFactory.M_FORMAT_EXISTING);
+    
 		try {
 			int indentationLevel = 0;
-			TextEdit edit = formatter.format(CodeFormatter.K_UNKNOWN, code, 0,
+			TextEdit edit = formatter.format(CodeFormatter.K_UNKNOWN |
+			    CodeFormatter.F_INCLUDE_COMMENTS, code, 0,
 					code.length(), indentationLevel, null);
 			if (edit != null)
 				edit.apply(document);

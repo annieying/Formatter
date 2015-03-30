@@ -1,7 +1,7 @@
 package formatter;
 
 import java.io.File;
-
+import org.apache.commons.io.FileUtils;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
 
@@ -18,10 +18,12 @@ public class Application implements IApplication {
 				System.out
 						.println("Require two arguments: <Code> <Check Style File>");
 			} else {
-				String code = args[0];
+				String codeFile = args[0];
 				String eclipseCodeStyleFile = args[1];
-				EclipseCodeStyleFormatter.format(code, new File(
-						eclipseCodeStyleFile));
+				String formatted = EclipseCodeStyleFormatter.format(
+				    FileUtils.readFileToString(new File(codeFile)),
+				    new File(eclipseCodeStyleFile), 20);
+				System.out.println(formatted);
 			}
 		}
 		return IApplication.EXIT_OK;

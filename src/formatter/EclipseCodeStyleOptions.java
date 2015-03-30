@@ -11,6 +11,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.jdt.core.formatter.DefaultCodeFormatterConstants;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -23,8 +24,10 @@ import org.xml.sax.SAXException;
  * @author deniz.turan (http://denizstij. blogspot.com/) Oct-2009
  */
 public class EclipseCodeStyleOptions {
-	public static final String lineLengthKey = "org.eclipse.jdt.core.formatter.lineSplit";
-	public static final String commentLineLength = "org.eclipse.jdt.core.formatter.comment.line_length";
+//	public static final String lineLengthKey = "org.eclipse.jdt.core.formatter.lineSplit";
+	public static final String lineLengthKey = DefaultCodeFormatterConstants.FORMATTER_LINE_SPLIT;
+	public static final String commentLineLength = DefaultCodeFormatterConstants.FORMATTER_COMMENT_LINE_LENGTH; 
+//	  "org.eclipse.jdt.core.formatter.comment.line_length";
 
 	private static Map getCodeStyleEntries(File xmlFile)
 			throws ParserConfigurationException, SAXException, IOException {
